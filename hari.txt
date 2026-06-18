@@ -1,0 +1,7 @@
+Senin
+Selasa
+Rabu
+Kamis
+Sabtu
+Jum'at
+Minggu
