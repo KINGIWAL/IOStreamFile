@@ -43,7 +43,7 @@ public class BukuKontak {
  while ((baris = pembaca.readLine()) != null) {
  String[] bagian = baris.split(";");
  if (bagian.length == 2) {
- daftar.add(new Kontak(bagian[0], bagian[1])); 
+ daftar.add(new Kontak(bagian[0], bagian[1],bagian[2])); 
 }
  }
  System.out.println("Kontak dimuat dari " + namaBerkas);
@@ -54,4 +54,36 @@ public class BukuKontak {
  public int jumlahKontak() {
  return daftar.size();
  }
+ 
+ public void cariKontak(String nama){
+             boolean ditemukan = false;
+        for (Kontak k : daftar) {
+            if (k.getNama().equalsIgnoreCase(nama)) {
+                System.out.println("Kontak ditemukan:");
+                System.out.println("Nama  : " + k.getNama());
+                System.out.println("Nomor : " + k.getNomor());
+                System.out.println("Email: " + k.getEmail());
+                ditemukan = true;
+                break; // berhenti setelah ketemu
+            }
+        }
+        if (!ditemukan) {
+            System.out.println("Kontak dengan nama '" + nama + "' tidak ditemukan.");
+        }
+ }
+ 
+     public void hapusKontak(String nama) {
+        boolean dihapus = false;
+        for (Kontak k : daftar) {
+            if (k.getNama().equalsIgnoreCase(nama)) {
+                daftar.remove(k);
+                System.out.println("Kontak '" + nama + "' berhasil dihapus.");
+                dihapus = true;
+                break;
+            }
+        }
+        if (!dihapus) {
+            System.out.println("Kontak dengan nama '" + nama + "' tidak ditemukan, tidak bisa dihapus.");
+        }
+    }
 }
